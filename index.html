@@ -10,7 +10,8 @@
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
             // Check for iOS
-            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            if (/iPad|iPhone|iPod|Macintosh/.test(userAgent) && 'ontouchend' in document) {
+                // 'ontouchend' ensures it's a touch device like iOS, not a Mac desktop
                 window.location.href = "https://apps.apple.com/us/app/real-estate-colima/id6444501425";
             }
             // Check for Android
@@ -34,13 +35,10 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            background-color: #f5f5f5;
-            text-align: center;
+            margin: 0;\n background-color: #f5f5f5;\n text-align: center;
         }
         #message {
-            font-size: 1.2rem;
-            color: #333;
+            font-size: 1.2rem;\n color: #333;
         }
     </style>
 </head>
