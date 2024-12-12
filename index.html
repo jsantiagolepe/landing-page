@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Our App</title>
+    <script>
+        // Function to detect OS and redirect
+        function redirectToAppStore() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Check for iOS
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = "https://apps.apple.com/us/app/real-estate-colima/id6444501425";
+            }
+            // Check for Android
+            else if (/android/i.test(userAgent)) {
+                window.location.href = "https://play.google.com/store/apps/details?id=com.realestate.colima";
+            }
+            // If neither, show a message
+            else {
+                document.getElementById('message').innerText = 
+                    "This app is available for iOS and Android only. Please visit from a compatible device.";
+            }
+        }
+
+        // Trigger redirect on page load
+        window.onload = redirectToAppStore;
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        #message {
+            font-size: 1.2rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="message">Redirecting to the appropriate store...</div>
+</body>
+</html>
