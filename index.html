@@ -17,22 +17,7 @@
             else if (/android/i.test(userAgent)) {
                 window.location.href = "https://play.google.com/store/apps/details?id=mx.shago.realestate";
             }
-            // Si no es compatible, muestra mensaje y opciones
-            else {
-                document.getElementById('message').innerHTML = `
-                    Esta aplicación está disponible solo para iOS y Android.
-                    Por favor, visita el enlace correspondiente:
-                    <div class="buttons">
-                        <a href="https://apps.apple.com/us/app/real-estate-colima/id6444501425" class="button ios">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png" alt="Apple Logo" class="icon">
-                            App Store
-                        </a>
-                        <a href="https://play.google.com/store/apps/details?id=mx.shago.realestate" class="button android">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android Logo" class="icon">
-                            Google Play
-                        </a>
-                    </div>`;
-            }
+            // Si no es compatible, deja el mensaje tal cual
         }
 
         // Ejecuta la redirección al cargar la página
@@ -42,6 +27,7 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -52,9 +38,9 @@
         #message {
             font-size: 1.2rem;
             color: #333;
+            margin-bottom: 20px;
         }
         .buttons {
-            margin-top: 20px;
             display: flex;
             justify-content: center;
             gap: 10px;
@@ -83,5 +69,15 @@
 </head>
 <body>
     <div id="message">Redirigiendo a la tienda correspondiente...</div>
+    <div class="buttons">
+        <a href="https://apps.apple.com/us/app/real-estate-colima/id6444501425" class="button ios">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png" alt="Apple Logo" class="icon">
+            App Store
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=mx.shago.realestate" class="button android">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android Logo" class="icon">
+            Google Play
+        </a>
+    </div>
 </body>
 </html>
