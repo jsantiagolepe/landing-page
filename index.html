@@ -1,31 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Our App</title>
+    <title>Descarga Nuestra App</title>
     <script>
-        // Function to detect OS and redirect
+        // Función para detectar el sistema operativo y redirigir
         function redirectToAppStore() {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-            // Check for iOS
+            // Verifica si es iOS
             if (/iPad|iPhone|iPod|Macintosh/.test(userAgent) && 'ontouchend' in document) {
-                // 'ontouchend' ensures it's a touch device like iOS, not a Mac desktop
                 window.location.href = "https://apps.apple.com/us/app/real-estate-colima/id6444501425";
             }
-            // Check for Android
+            // Verifica si es Android
             else if (/android/i.test(userAgent)) {
                 window.location.href = "https://play.google.com/store/apps/details?id=mx.shago.realestate";
             }
-            // If neither, show a message
+            // Si no es compatible, muestra mensaje y opciones
             else {
-                document.getElementById('message').innerText = 
-                    "This app is available for iOS and Android only. Please visit from a compatible device.";
+                document.getElementById('message').innerHTML = `
+                    Esta aplicación está disponible solo para iOS y Android.
+                    Por favor, visita el enlace correspondiente:
+                    <div class="buttons">
+                        <a href="https://apps.apple.com/us/app/real-estate-colima/id6444501425" class="button ios">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png" alt="Apple Logo" class="icon">
+                            App Store
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=mx.shago.realestate" class="button android">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android Logo" class="icon">
+                            Google Play
+                        </a>
+                    </div>`;
             }
         }
 
-        // Trigger redirect on page load
+        // Ejecuta la redirección al cargar la página
         window.onload = redirectToAppStore;
     </script>
     <style>
@@ -43,9 +53,35 @@
             font-size: 1.2rem;
             color: #333;
         }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .button {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .button.ios {
+            background-color: #007aff;
+        }
+        .button.android {
+            background-color: #3ddc84;
+        }
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
     </style>
 </head>
 <body>
-    <div id="message">Redirecting to the appropriate store...</div>
+    <div id="message">Redirigiendo a la tienda correspondiente...</div>
 </body>
 </html>
